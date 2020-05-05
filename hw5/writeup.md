@@ -237,7 +237,7 @@ The following are the functional specifications for the flight service system, t
   Cancelled reservations should not be displayed.
 
 
-- **cancel (extra credit) ** lets a user to cancel an existing uncanceled reservation. The user must be logged in to cancel reservations and must provide a valid reservation ID.
+- **cancel(extra credit)** lets a user to cancel an existing uncanceled reservation. The user must be logged in to cancel reservations and must provide a valid reservation ID.
   Make sure you make the corresponding changes to the tables in case of a successful cancellation (e.g., if a reservation is already paid, then the customer should be refunded).
 
 
