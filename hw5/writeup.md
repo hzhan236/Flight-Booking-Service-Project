@@ -9,6 +9,7 @@ To learn how to use SQL from within Java via JDBC.
 * Maven (if using OSX, we recommend using Homebrew and installing with `brew install maven`)
 * [Prepared Statements Java Doc](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/PreparedStatement.html)
 * [Prepared Statements Example](https://www.google.com/url?q=https%3A%2F%2Fcourses.cs.washington.edu%2Fcourses%2Fcse344%2F19su%2Flectures%2FHW4_prepared_statements_multi-parameter.docx&sa=D&sntz=1&usg=AFQjCNHSGHdp-3AQDAqr7n_jhMizgfyrzw)
+* [Gitlab Setup](https://drive.google.com/open?id=1-tqnQKQSKK1EEM5UCcHsCxkElQbQwK9LQzV0KMpiWHU)
 * starter code files
 
 Instructions assume you are on the Linux lab machines, attu, or home VM.
