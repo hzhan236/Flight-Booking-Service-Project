@@ -1,4 +1,4 @@
-# Flight App (CSE344)
+# Flight App (CSE414)
 
 To test cases folder recursively (all ``.txt`` files):
 
