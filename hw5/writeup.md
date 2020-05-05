@@ -539,8 +539,10 @@ have been committed & uploaded to GitLab.
 ### For milestone 1
 
 For milestone 1, use the provided `turnInMilestone.sh` tool to apply the `milestone1` tag to your git repository
-so that we know which commit you want to use for your turn in. Make sure that the gitlab server
-has the tag at the correct place by visiting the Repository > Tags page for your repo.
+so that we know which commit you want to use for your turn in. For running the script, use `./turnInMilestone.sh`
+in terminal. After running the script, make sure that the gitlab server has the tag at the correct place by visiting
+the Repository > Tags page for your repo.
+
 
 ### For milestone 2
 
