@@ -1,4 +1,4 @@
-# CSE 344 Homework : Database Application and Transaction Management
+# CSE 414 Homework : Database Application and Transaction Management
 
 **Objectives:**
 To gain experience with database application development and transaction management.
@@ -8,19 +8,20 @@ To learn how to use SQL from within Java via JDBC.
 * [SQL Server](http://www.microsoft.com/sqlserver) through [SQL Azure](https://azure.microsoft.com/en-us/services/sql-database/)
 * Maven (if using OSX, we recommend using Homebrew and installing with `brew install maven`)
 * [Prepared Statements](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/PreparedStatement.html)
+* [Prepared Statements](https://www.google.com/url?q=https%3A%2F%2Fcourses.cs.washington.edu%2Fcourses%2Fcse344%2F19su%2Flectures%2FHW4_prepared_statements_multi-parameter.docx&sa=D&sntz=1&usg=AFQjCNHSGHdp-3AQDAqr7n_jhMizgfyrzw)
 * starter code files
 
 Instructions assume you are on the Linux lab machines, attu, or home VM.
 
-**Assigned date:** April 30, 2020
+**Assigned date:** May 6, 2020
 
 **[Milestone 1](#milestone-1) Due date:**
 
-Thursday, May 7, 2020, at 11pm PDT. NO LATE DAYS may be used for milestone 1. Turn in your solution using `git` by submitting a [tag](#for-milestone-1)
+Wednesday, May 13, 2020, at 11pm PDT. NO LATE DAYS may be used for milestone 1. Turn in your solution using `git` by submitting a [tag](#for-milestone-1)
 
 **[Milestone 2](#milestone-2) Due date:**
 
-Friday, May 15, 2020, at 11pm PDT. You may use late days for milestone 2. Turn in your solution using `git` as usual.
+Wednesday, May 20, 2020, at 11pm PDT. You may use late days for milestone 2. Turn in your solution using `git` as usual.
 
 **WARNING:**
 This homework requires writing a non-trivial amount of Java code (our solution is about 800 lines) and test cases. It should take SIGNIFICANTLY more time than your previous 344 assignments.
@@ -37,7 +38,7 @@ Congratulations, you are opening your own flight booking service!
 
 In this homework, you have two main tasks:
 * Design a database of your customers and the flights they book
-* Complete a working prototype of your flight booking application that connects to the database (in Azure) then allows customers to use a CLI to search, book, cancel, etc. flights
+* Complete a working prototype of your flight booking application that connects to the database (in Azure) then allows customers to use a CLI (command line interface) to search, book, cancel, etc. flights
 
 You will also be writing a few test cases and explaining your design in a short writeup.
 We have already provided code for a UI (`FlightService.java`) and partial backend (`Query.java`).
@@ -47,8 +48,8 @@ In real life, you would develop a web-based interface instead of a CLI, but we u
 For this lab, you can use any of the classes from the [Java 11 standard JDK](https://docs.oracle.com/en/java/javase/11/docs/api/index.html).
 
 #### Connect your application to your database
-You will need to access your Flights database on SQL Azure from HW2.
- Alternatively, you may create a new database and use the HW2 specification for importing Flights data.
+You will need to access your Flights database on SQL Azure from HW3.
+ Alternatively, you may create a new database and use the HW3 specification for importing Flights data.
  
 (Everyone should be able to create database servers on Azure now. If you'd really like to continue using a local SQL Server Express install,
 you should be able to follow [these instructions](https://www.mydatahack.com/how-to-connect-to-locally-installed-sql-server-express-with-jdbc/)
@@ -236,7 +237,7 @@ The following are the functional specifications for the flight service system, t
   Cancelled reservations should not be displayed.
 
 
-- **cancel** lets a user to cancel an existing uncanceled reservation. The user must be logged in to cancel reservations and must provide a valid reservation ID.
+- **cancel (extra credit) ** lets a user to cancel an existing uncanceled reservation. The user must be logged in to cancel reservations and must provide a valid reservation ID.
   Make sure you make the corresponding changes to the tables in case of a successful cancellation (e.g., if a reservation is already paid, then the customer should be refunded).
 
 
@@ -357,7 +358,7 @@ This milestone is worth 16 points (about 10% of the total homework grade) based 
 
 ## Milestone 2:
 
-#### Step 4: Implement book, pay, reservations, cancel, and add transactions!
+#### Step 4: Implement book, pay, reservations, cancel (extra credit) , and add transactions!
 
 Implement the `book`, `pay` , `reservations` and `cancel` commands in `Query.java`.
 
