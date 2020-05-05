@@ -14,6 +14,53 @@ To learn how to use SQL from within Java via JDBC.
 
 Instructions assume you are on the Linux lab machines, attu, or home VM.
 
+We will be using git, a source code control tool, for distributing and submitting homework assignments in this class.
+This will allow you to download the code and instruction for the homework,
+and also submit the labs in a standardized format that will streamline grading.
+You will also be able to use git to commit your progress on the labs
+as you go. This is important: Use git to back up your work. Back
+up regularly by both committing and pushing your code as we describe below.
+Course git repositories will be hosted as a repository in CSE's
+gitlab, that is visible only to
+you and the course staff.
+
+Getting started with Git
+There are numerous guides on using git that are available. They range from being interactive to just text-based.
+Find one that works and experiment -- making mistakes and fixing them is a great way to learn.
+Git may already be installed in your environment; if it's not, you'll need to install it first.
+For bash/Linux environments, git should be a simple apt-get / yum / etc. install.
+More detailed instructions may be found in the link under assignment tools.
+If you are using Eclipse or IntelliJ, many versions come with git already configured.
+The instructions will be slightly different than the command line instructions listed but will work
+for any OS. 
+
+Cloning your repository for homework assignments
+We have created a git repository that you will use to commit and submit your the homework assignments.
+This repository is hosted on the CSE's GitLab ,
+and you can view it by visiting the GitLab website at
+https://gitlab.cs.washington.edu/cse414-20sp/cse414-2020sp-[yourUWnetid].
+The first thing you'll need to do is set up a SSH key to allow communication with GitLab:
+
+If you don't already have one, generate a new SSH key. See these instructions for details on how to do this.
+Visit the GitLab SSH key management page. You'll need to log in using your UW account.
+Click "Add SSH Key" and paste in your public key into the text area.
+
+While you're logged into the GitLab website, browse around to see which projects you have access to.
+You should have access to cse414-[your username].
+Spend a few minutes getting familiar with the directory layout and file structure. For now nothing will
+be there except for the hw1 directory with these instructions.
+We next want to move the code from the GitLab repository onto your local file system.
+To do this, you'll need to clone the 414 repository by issuing the following commands on the command line:
+$ cd [directory that you want to put your 414 assignments]
+$ git clone git@gitlab.cs.washington.edu:cse414-20sp/cse414-[your UW username].git
+$ cd cse414-[your UW username]
+This will make a complete replica of the repository locally. If you get an error that looks like:
+Cloning into 'cse414-[your UW username]'...
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+... then there is a problem with your GitLab configuration. Check to make sure that your GitLab username matches the repository suffix, that your private key is in your SSH directory (~/.ssh) and has the correct permissions, and that you can view the repository through the website.
+Cloning will make a complete replica of the homework repository locally. Any time you commit and push your local changes, they will appear in the GitLab repository.  Since we'll be grading the copy in the GitLab repository, it's important that you remember to push all of your changes!
+
 **Assigned date:** May 6, 2020
 
 **[Milestone 1](#milestone-1) Due date:**
