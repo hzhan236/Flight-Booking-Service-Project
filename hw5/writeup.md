@@ -513,6 +513,8 @@ Save this file in `design.md` in the same folder of `writeup.md`. You can add im
 * Writeup (10 points)
 = 150 points total
 
++ 10 points for implementing cancel (Extra credit)
+
 We will be testing your implementations using the home VM.
 
 ## Submission Instructions
