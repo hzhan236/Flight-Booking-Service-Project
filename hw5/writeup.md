@@ -74,8 +74,8 @@ We next want to move the code from the GitLab repository onto your local file sy
 To do this, you'll need to clone the 414 repository by issuing the following commands on the command line:
 ```sh
 $ cd [directory that you want to put your 414 assignments]
-$ git clone git@gitlab.cs.washington.edu:cse414-20sp/cse414-[your UW username].git
-$ cd cse414-[your UW username]
+$ git clone git@gitlab.cs.washington.edu:cse414-20sp/[your UW username].git
+$ cd [your UW username]
 ```
 This will make a complete replica of the repository locally. If you get an error that looks like:
 
