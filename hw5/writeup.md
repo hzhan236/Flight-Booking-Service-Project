@@ -30,12 +30,13 @@ Milestone 1 makes good progress towards the goal, but is a less than half of the
 
 ## Getting started with Git
 
-For this assignment, we will be using git, a source code control tool, for distributing and submitting homework assignment.
+For this assignment, we will be using `git`, a source code control tool, for distributing and submitting homework assignment.
 
 This will allow you to download the code and instruction for the homework,
 and also submit the labs in a standardized format that will streamline grading.
-You will also be able to use git to commit your progress on the lab
-as you go. This is important: Use git to back up your work. Back
+
+You will also be able to use `git` to commit your progress on the lab
+as you go. This is **important**: Use `git` to back up your work. Back
 up regularly by both committing and pushing your code as we describe below.
 Course git repositories will be hosted as a repository in CSE's
 gitlab, that is visible only to
@@ -45,7 +46,8 @@ There are numerous guides on using git that are available. They range from being
 Find one that works and experiment -- making mistakes and fixing them is a great way to learn.
 Git may already be installed in your environment; if it's not, you'll need to install it first.
 For bash/Linux environments, git should be a simple apt-get / yum / etc. install.
-More detailed instructions may be found in the link under assignment tools.
+More detailed instructions may be found [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
 If you are using Eclipse or IntelliJ, many versions come with git already configured.
 The instructions will be slightly different than the command line instructions listed but will work
 for any OS. 
