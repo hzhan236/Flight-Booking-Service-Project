@@ -67,7 +67,7 @@ The first thing you'll need to do is set up a SSH key to allow communication wit
   3. Click `"Add SSH Key"` and paste in your public key into the text area.
 
 While you're logged into the GitLab website, browse around to see which projects you have access to.
-You should have access to `cse414-[your username]`.
+You should have access to `cse414-20sp/[your username]`.
 Spend a few minutes getting familiar with the directory layout and file structure. For now nothing will
 be there except for the hw1 directory with these instructions.
 We next want to move the code from the GitLab repository onto your local file system.
