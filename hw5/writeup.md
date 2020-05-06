@@ -58,7 +58,7 @@ We have created a git repository that you will use to commit and submit your the
 This repository is hosted on the CSE's GitLab ,
 and you can view it by visiting the GitLab website at
 
-https://gitlab.cs.washington.edu/cse414-20sp/cse414-2020sp-[yourUWnetid].
+https://gitlab.cs.washington.edu/cse414-20sp/[yourUWnetid].
 
 The first thing you'll need to do is set up a SSH key to allow communication with GitLab:
 
@@ -80,7 +80,7 @@ $ cd cse414-[your UW username]
 This will make a complete replica of the repository locally. If you get an error that looks like:
 
 ```sh
-Cloning into 'cse414-[your UW username]'...
+Cloning into '[your UW username]'...
 Permission denied (publickey).
 fatal: Could not read from remote repository.
 ```
@@ -89,7 +89,100 @@ fatal: Could not read from remote repository.
 
 Cloning will make a complete replica of the homework repository locally. Any time you `commit` and `push` your local changes, they will appear in the GitLab repository.  Since we'll be grading the copy in the GitLab repository, it's important that you remember to push all of your changes!
 
+### Adding an upstream remote
 
+The repository you just cloned is a replica of your own private repository on GitLab. 
+The copy on your file system is a local copy, and the copy on GitLab is referred to as the `origin` remote copy.  You can view a list of these remote links as follows:
+
+```sh
+$ git remote -v
+```
+
+There is one more level of indirection to consider.
+When we created your `cse414-20sp/[your UW username]` repository, we forked a copy of it from another 
+repository `cse414-2020sp`.  In `git` parlance, this "original repository" referred to as an `upstream` repository.
+When we release bug fixes and subsequent homeworks, we will put our changes into the upstream repository, and you will need to be able to pull those changes into your own.  See [the documentation](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) for more details on working with remotes -- they can be confusing!
+
+In order to be able to pull the changes from the upstream repository, we'll need to record a link to the `upstream` remote in your own local repository:
+
+```sh
+$ # Note that this repository does not have your username as a suffix!
+$ git remote add upstream git@gitlab.cs.washington.edu:cse414-20sp/cse414-2020sp.git
+```
+
+For reference, your final remote configuration should read like the following when it's setup correctly:
+
+```sh
+$ git remote -v
+  origin  git@gitlab.cs.washington.edu:cse414-20sp/[your UW username].git (fetch)
+  origin  git@gitlab.cs.washington.edu:cse414-20sp/[your UW username].git (push)
+  upstream	git@gitlab.cs.washington.edu:cse414-20sp/cse414-2020sp.git (fetch)
+  upstream	git@gitlab.cs.washington.edu:cse414-20sp/cse414-2020sp.git (push)
+```
+
+In this configuration, the `origin` (default) remote links to **your** repository 
+where you'll be pushing your individual submission. The `upstream` remote points to **our** 
+repository where you'll be pulling subsequent homework and bug fixes (more on this below).
+
+Let's test out the origin remote by doing a push of your master branch to GitLab. Do this by issuing the following commands:
+
+```sh
+$ touch empty_file
+$ git add empty_file
+$ git commit empty_file -m 'Testing git'
+$ git push # ... to origin by default
+```
+
+The `git push` tells git to push all of your **committed** changes to a remote.  If none is specified, `origin` is assumed by default (you can be explicit about this by executing `git push origin`).  Since the `upstream` remote is read-only, you'll only be able to `pull` from it -- `git push upstream` will fail with a permission error.
+
+After executing these commands, you should see something like the following:
+
+```sh
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 313 bytes | 313.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0)
+To gitlab.cs.washington.edu:cse414-20sp/[your username].git
+   32a18bd..f80a174  master -> master
+```
+
+We pushed a blank file to our origin remote, which isn't very interesting. Let's clean up after ourselves:
+
+```sh
+$ # Tell git we want to remove this file from our repository
+$ git rm empty_file
+$ # Now commit all pending changes (-a) with the specified message (-m)
+$ git commit -a -m 'Removed test file'
+$ # Now, push this change to GitLab
+$ git push
+```
+
+If you don't know Git that well, this probably seemed very arcane. Just keep using Git and you'll understand more and more. We'll provide explicit instructions below on how to use these commands to actually indicate your final lab solution.
+
+### Pulling from the upstream remote
+
+If we release additional details or bug fixes for this homework, 
+we'll push them to the repository that you just added as an `upstream` remote. You'll need to `pull` and `merge` them into your own repository. (You'll also do this for subsequent homeworks!) You can do both of these things with the following command:
+
+```sh
+$ git pull upstream master
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 2), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From gitlab.cs.washington.edu:cse414-20sp/cse414-2020sp
+ * branch            master     -> FETCH_HEAD
+   7f81148..b0c4a3e  master     -> upstream/master
+Merge made by the 'recursive' strategy.
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+Here we pulled and merged changes to the `README.md` file. Git may open a text editor to allow you to specify a merge commit message; you may leave this as the default. Note that these changes are merged locally, but we will eventually want to push them to the GitLab repository (`git push`).
+
+Note that it's possible that there aren't any pending changes in the upstream repository for you to pull.  If so, `git` will tell you that everything is up to date.
 
 
 ## Assignment Details
