@@ -581,19 +581,29 @@ We will be testing your implementations using the home VM.
 
 ## Submission Instructions
 
-In order for your answers to be added to the git repo, you need to explicitly add each required file:
+In order for your answers to be added to the git repo, you need to explicitly `add` each required file:
 
 ```sh
 $ git add create_tables.sql ...
 ```
 
-and push to make sure your code is uploaded to GitLab:
+Alternatively, you can even use
+
+```sh
+git add .
+```
+
+This will add all the files which have been updated
+
+After adding, `commit` and `push` to make sure your code is uploaded to GitLab:
 
 ```sh
 $ git commit -a -m 'my latest changes are here (or any other message you want)'
 $ git push
 ```
 The flag `-a` means "commit all changes" (the easiest way); you can also manually select which files you want to commit. Make sure to Commit and push as often as you want to save your homework on gitlab, before the deadline. We would be using your latest submission for grading
+
+For a sanity check, you can utilize `git status` command and it would show if you need to  `add` or `commit` any files before pushing.
 
 **Final Word of Caution!**
 Git is a distributed version control system. This means everything operates offline until you run `git pull` or `git push`. This is a great feature.
