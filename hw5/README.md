@@ -463,7 +463,7 @@ Please use unqualified table names in all of your SQL queries  (e.g. say `SELECT
 
 We expect that you use [Prepared Statements](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/PreparedStatement.html) when you execute queries that include user input.
 
-Since we will be looking at your code, it is important to make your code easy to read. Use dsecriptive variable names, for instamce. Take a look at the the `Flight` class we provide, a class that serves as a container for your flight data, as an example to follow. In methods like `search', for example, you will see that you need to add a method similar to the 'toString' method that we provided in the Flight class. Use our `toString` as a style guide.
+Since we will be looking at your code, it is important to make your code easy to read. Use dsecriptive variable names, for instance. Take a look at the the `Flight` class we provide, a class that serves as a container for your flight data, as an example to follow. In methods like `search`, for example, you will see that you need to add a method similar to the 'toString' method that we provided in the Flight class. Use our `toString` as a style guide.
 
 We have also provided a sample helper method `checkFlightCapacity` that uses a prepared statement.
 `checkFlightCapacity` is also intended as an example that outlines the way prepared statements should be used in this assignment (creating a constant SQL string, preparing it using the prepareStatements method, and then, ultimately, executing it).
