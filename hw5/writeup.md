@@ -292,15 +292,15 @@ which make use of these entities.
 - **Reservations**: A booking for an itinerary, which may consist of one (direct) or two (one-hop) flights.
   Each reservation can either be paid or unpaid, cancelled or not, and has a unique ID.
 
-Create other tables or indexes you need for this assignment in `createTables.sql` (see below).
+You create these and any other Tables (and indexes) that are needed for this assignment in `createTables.sql` (which is  discussed in more detail below).
 
 
 #### Requirements
 The following are the functional specifications for the flight service system, to be implemented in `Query.java`
-(see the method stubs in the starter code for full specification as to what error message to return, etc):
+The methods you need to provide are indicated in the starter code, where they exist as stubs, skeletons that you will fill out as you develop your implementation. Refer to `Query.java` for the complete specification, including what condiitons to handle and what error messages to return, etc.
 
 - **create** takes in a new username, password, and initial account balance as input. It creates a new user account with the initial balance.
-  It should return an error if negative, or if the username already exists. Usernames are checked case-insensitively.
+  Create() should return an error if it is passed an initial balance that is a negative dollar amount, or if the username already exists. When validating Usernames, please ensure that they are not case-sensitive. In other words, "UserId1", "USERID1", and "userid1" all map to the same User ID. 
   You can assume that all usernames and passwords have at most 20 characters.
   We will store the salted password hash and the salt itself to avoid storing passwords in plain text.
   Use the following code snippet to as a template for computing the hash given a password string:
@@ -326,11 +326,9 @@ The following are the functional specifications for the flight service system, t
     ```
 
 - **login** takes in a username and password, and checks that the user exists in the database and that the password matches. To compute the hash, adapt the above code.
-  Within a single session (that is, a single instance of your program), only one user should be logged in. You can track this via a local variable in your program.
+  Within a single session (that is, a single instance of your program), only one user should be logged in. A good practice is for every test case to begin with a login request. Make sure you log the User out when the prograsm terminates. To keep things simple, you can track the login status of a User  using a local variable in your program. You should not need to track a user's login status inside the database. 
   If a second login attempt is made, please return "User already logged in".
-  Across multiple sessions (that is, if you run your program multiple times), the same user is allowed to be logged in.
-  This means that you do not need to track a user's login status inside the database.
-
+ 
 - **search** takes as input an origin city (string), a destination city (string), a flag for only direct flights or not (0 or 1), the date (int), and the maximum number of itineraries to be returned (int).
   For the date, we only need the day of the month, since our dataset comes from July 2015. Return only flights that are not canceled, ignoring the capacity and number of seats available.
   If the user requests n itineraries to be returned, there are a number of possibilities:
@@ -386,13 +384,13 @@ The following are the functional specifications for the flight service system, t
 - **reservations** lists all reservations for the currently logged-in user.
   Each reservation must have ***a unique identifier (which is different for each itinerary) in the entire system***, starting from 1 and increasing by 1 after each reservation is made.
 
-  There are many ways to implement this. One possibility is to define a "ID" table that stores the next ID to use, and update it each time when a new reservation is made successfully.
+  There are many ways to implement this. One possibility is to define a "ID" table that stores the next ID to use, and update it each time when a new reservation is made successfully. Another way is to define an id field as a Primary Key using the Identity type built into SQL Server, which allows SQL Server to generate unique values automatically for the Key field every time a new row is inserted into the Table. Your program won't know what the vlaue of the Idenity is until your INSERT statement has executed, at which time you can run a simple SELECT id FROM table WHERE ... statement to retrieve it. 
 
   The user must be logged in to view reservations. The itineraries should be displayed using similar format as that used to display the search results, and they should be shown in increasing order of reservation ID under that username.
   Cancelled reservations should not be displayed.
 
 
-- **cancel(extra credit)** lets a user to cancel an existing uncanceled reservation. The user must be logged in to cancel reservations and must provide a valid reservation ID.
+- **cancel(extra credit)** lets a user cancel an existing uncanceled reservation. The user must be logged in to cancel reservations and must provide a valid reservation ID.
   Make sure you make the corresponding changes to the tables in case of a successful cancellation (e.g., if a reservation is already paid, then the customer should be refunded).
 
 
@@ -405,8 +403,10 @@ Refer to the Javadoc in `Query.java` for full specification and the expected res
 
 #### Testing:
 
-To test that your application works correctly, we have provided a test harness using the JUnit framework.
-Our test harness will compile your code and run all the test cases in the provided `cases/` folder. To run the harness, execute in the project directory:
+To test that your application works correctly, we have provided an automated testing harness using the JUnit framework.
+Our test harness will compile your code and run all the test cases in the provided `cases/` folder. Automated testing is extremely helpful and, when used properly, should speed up your development. As you develop a new capability, develop an automated test to verify that the capability works. Each time you add a new capability, make sure you haven't broken anything that previously worked by running the existing tests against the augmented solution.  
+
+To run the harness, execute in the project directory:
 
 ```sh
 $ mvn test
@@ -438,7 +438,7 @@ It is **up to you** to implement your solutions so that they completely follow t
 
 For this homework, you're required to write test cases for each of the commands (you don't need to test `quit`).
 Separate each test case in its own file and name it `<command name>_<some descriptive name for the test case>.txt` and turn them in.
-It’s fine to turn in test cases for erroneous conditions (e.g., booking on a full flight, logging in with a non-existent username).
+It’s a good practice to develop test cases for all erroneous conditions (e.g., booking on a full flight, logging in with a non-existent username) that your code is built to handle. The test cases you develop are one of your important project delieverables. 
 
 ## Milestone 1:
 
@@ -463,10 +463,10 @@ Please use unqualified table names in all of your SQL queries  (e.g. say `SELECT
 
 We expect that you use [Prepared Statements](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/PreparedStatement.html) when you execute queries that include user input.
 
-Please make your code reasonably easy to read. To keep things neat we have provided you with the `Flight` inner class that acts as a container for your flight data.
-The `toString` method in the Flight class matches what is needed in methods like `search`.
+Since we will be looking at your code, it is important to make your code easy to read. Use dsecriptive variable names, for instamce. Take a look at the the `Flight` class we provide, a class that serves as a container for your flight data, as an example to follow. In methods like `search', for example, you will see that you need to add a method similar to the 'toString' method that we provided in the Flight class. Use our `toString` as a style guide.
+
 We have also provided a sample helper method `checkFlightCapacity` that uses a prepared statement.
-`checkFlightCapacity` outlines the way we think forming prepared statements should go for this assignment (creating a constant SQL string, preparing it in the prepareStatements method, and then finally using it).
+`checkFlightCapacity` is also intended as an example that outlines the way prepared statements should be used in this assignment (creating a constant SQL string, preparing it using the prepareStatements method, and then, ultimately, executing it).
 
 #### Step 1: Implement clearTables
 
@@ -509,7 +509,7 @@ Using ```mvn test -Dtest.cases="cases/mycases"```, you should now also pass your
 Turn in your milestone 1 submission by pushing your code and applying a [tag](#for-milestone-1).
 
 #### Grading:
-This milestone is worth 16 points (about 10% of the total homework grade) based on whether your create, login, and search methods pass the provided test cases.
+This milestone is worth 50 points (25% of the total homework grade), based on whether your create, login, and search methods pass the provided test cases.
 
 ## Milestone 2:
 
@@ -592,7 +592,7 @@ If no seat is available, the booking should be rolled back, etc.
 The total amount of code to add transaction handling is in fact small, but getting everything to work harmoniously may take some time.
 Debugging transactions can be a pain, but print statements are your friend!
 
-Now you should pass all the provided test in cases during `mvn test`
+At this point, you program should pass all the test cases you have provided when you execute `mvn test`
 
 #### Step 5: Write more (transaction) test cases
 
@@ -646,11 +646,11 @@ Using ```mvn test -Dtest.cases="cases"```, you should now also pass ALL the test
 *Congratulations!* You now finish the entire flight booking application and is ready to launch your flight booking business :)
 
 #### Write down your design
-Please describe and/or draw your database design. This is so we can understand your implementation as close to what you were thinking.
+Please describe and draw your database design using UML. This will help us understand your implementation and your thinking.
 Explain your design choices in creating new tables. Also, describe your thought process in deciding what needs to be persisted on the database
-and what can be implemented in-memory (not persisted on the database). Please be concise in your writeup (< half a page).
+and what can be implemented in-memory (not persisted on the database). Please be concise in your writeup (~ half a page + the UML specification).
 
-Save this file in `design.md` in the same folder of `writeup.md`. You can add images to markdown by using `![imagename](./relative/path/to/image.png)`. Make sure any images is also pushed to git.
+Save this file in `design.md` in the same folder of `writeup.md`. You can add images to markdown by using a `![imagename](./relative/path/to/image.png)` reference. Make sure that any images like the UML your document references are also pushed to git.
 
 
 #### What to turn in:
@@ -661,14 +661,14 @@ Save this file in `design.md` in the same folder of `writeup.md`. You can add im
 
 #### Grading:
 
-* Milestone 1 check in (16 points)
-* Customer database design (10 points)
+* Milestone 1 check in (50 points)
+* Customer database design (20 points)
 * Java customer application (100 points)
-* Written test cases (14 points)
+* Written test cases (20 points)
 * Writeup (10 points)
 = 150 points total
 
-+ 10 points for implementing cancel (Extra credit)
++ 25 points for implementing cancel (Extra credit)
 
 We will be testing your implementations using the home VM.
 
