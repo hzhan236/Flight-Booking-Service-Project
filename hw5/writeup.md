@@ -100,7 +100,7 @@ $ git remote -v
 
 There is one more level of indirection to consider.
 When we created your `cse414-20sp/[your UW username]` repository, we forked a copy of it from another 
-repository `cse414-2020sp`.  In `git` parlance, this "original repository" referred to as an `upstream` repository.
+repository `cse414-2020sp`.  In `git` parlance, this "original repository" is referred to as an `upstream` repository.
 When we release bug fixes and subsequent homeworks, we will put our changes into the upstream repository, and you will need to be able to pull those changes into your own.  See [the documentation](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) for more details on working with remotes -- they can be confusing!
 
 In order to be able to pull the changes from the upstream repository, we'll need to record a link to the `upstream` remote in your own local repository:
