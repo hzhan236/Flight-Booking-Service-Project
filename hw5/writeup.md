@@ -37,9 +37,9 @@ and also submit the labs in a standardized format that will streamline grading.
 
 You will also be able to use `git` to commit your progress on the lab
 as you go. This is **important**: Use `git` to back up your work. Back
-up regularly by both committing and pushing your code as we describe below.
-Course git repositories will be hosted as a repository in CSE's
-gitlab, that is visible only to
+up your work in progress regularly by both committing and PUSHing your latest code changes as we describe below.
+Course git repositories are hosted as a repository in CSE's
+gitlab that is visible only to
 you and the course staff.
 
 There are numerous guides on using git that are available. They range from being interactive to just text-based.
