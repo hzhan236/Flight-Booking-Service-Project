@@ -30,7 +30,7 @@ Milestone 1 makes good progress towards the goal, but is a less than half of the
 
 ## Getting started with Git
 
-For this assignment, we will be using `git`, a source code control tool, for distributing and submitting homework assignment.
+For this assignment, we will be using `git`, a source code control tool, for distributing and submitting homework assignments.
 
 This will allow you to download the code and instruction for the homework,
 and also submit the labs in a standardized format that will streamline grading.
