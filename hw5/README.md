@@ -666,7 +666,7 @@ Save this file in `design.md` in the same folder of `README.md`. You can add ima
 * Java customer application (100 points)
 * Written test cases (20 points)
 * Writeup (10 points)
-= 150 points total
+= 200 points total
 
 + 25 points for implementing cancel (Extra credit)
 
