@@ -32,7 +32,7 @@ Milestone 1 makes good progress towards the goal, but is a less than half of the
 
 For this assignment, we will be using `git`, a source code control tool, for distributing and submitting homework assignments.
 
-This will allow you to download the code and instruction for the homework,
+This will allow you to download the starter code and instructions you need for the homework,
 and also submit the labs in a standardized format that will streamline grading.
 
 You will also be able to use `git` to commit your progress on the lab
